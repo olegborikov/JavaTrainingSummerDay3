@@ -1,4 +1,4 @@
-package com.borikov.day3;
+package com.borikov.day3.main;
 
 import com.borikov.day3.creator.BallCreator;
 import com.borikov.day3.creator.BasketCreator;
