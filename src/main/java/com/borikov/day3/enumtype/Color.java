@@ -1,4 +1,4 @@
-package com.borikov.day3.entity;
+package com.borikov.day3.enumtype;
 
 public enum Color {
     RED,

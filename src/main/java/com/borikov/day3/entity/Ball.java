@@ -1,36 +1,29 @@
 package com.borikov.day3.entity;
 
+import com.borikov.day3.enumtype.Color;
+import com.borikov.day3.enumtype.Size;
+
 public class Ball {
-    private static final double MAX_RADIUS = 3.5;
-    private static final double MIN_RADIUS = 0.1;
+    private final Color color;
+    private final Size size;
+    private final double weight;
 
-    private static long id_generate = 0;
-    private long ballId;
-    private Color color;
-    private double radius;
-    private Material material;
-
-    public Ball(Color color, double radius, Material material) {
-        this.ballId = id_generate++;
+    public Ball(Color color, Size size, double weight) {
         this.color = color;
-        this.radius = radius;
-        this.material = material;
-    }
-
-    public long getBallId() {
-        return ballId;
+        this.size = size;
+        this.weight = weight;
     }
 
     public Color getColor() {
         return color;
     }
 
-    public double getRadius() {
-        return radius;
+    public Size getSize() {
+        return size;
     }
 
-    public Material getMaterial() {
-        return material;
+    public double getWeight() {
+        return weight;
     }
 
     @Override
@@ -42,10 +35,7 @@ public class Ball {
             return false;
         }
         Ball ball = (Ball) o;
-        if (radius != ball.radius) {
-            return false;
-        }
-        if (ballId != ball.ballId) {
+        if (weight != ball.weight) {
             return false;
         }
         if (color == null) {
@@ -53,16 +43,16 @@ public class Ball {
                 return false;
             }
         } else {
-            if (!color.equals(ball.color)) {
+            if (!ball.equals(ball.color)) {
                 return false;
             }
         }
-        if (material == null) {
-            if (ball.material != null) {
+        if (size == null) {
+            if (ball.size != null) {
                 return false;
             }
         } else {
-            if (!material.equals(ball.material)) {
+            if (!ball.equals(ball.size)) {
                 return false;
             }
         }
@@ -71,18 +61,16 @@ public class Ball {
 
     @Override
     public int hashCode() {
-        return (int) (31 * radius + ballId
-                + ((color != null) ? color.hashCode() : 0)
-                + ((material != null) ? material.hashCode() : 0));
+        return (int) (31 * weight + ((color != null) ? color.hashCode() : 0)
+                + ((size != null) ? size.hashCode() : 0));
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Ball{");
-        sb.append("ballId=").append(ballId);
-        sb.append(", color=").append(color);
-        sb.append(", radius=").append(radius);
-        sb.append(", material=").append(material);
+        sb.append("color=").append(color);
+        sb.append(", size=").append(size);
+        sb.append(", weight=").append(weight);
         sb.append('}');
         return sb.toString();
     }
