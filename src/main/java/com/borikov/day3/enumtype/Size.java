@@ -9,13 +9,13 @@ public enum Size {
     XL(25),
     XXL(30);
 
-    private final int volume;
+    private final double volume;
 
-    Size(int volume) {
+    Size(double volume) {
         this.volume = volume;
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return volume;
     }
 }

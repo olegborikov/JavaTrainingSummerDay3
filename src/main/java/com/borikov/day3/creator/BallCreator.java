@@ -9,10 +9,10 @@ import com.borikov.day3.validator.BallValidator;
 public class BallCreator {
     public Ball createBall(Color ballColor, Size ballSize, double weight) throws IncorrectDataException {
         BallValidator ballValidator = new BallValidator();
-        if(!ballValidator.isWeightInLimit(weight)){
+        if (!ballValidator.isWeightInLimit(weight)
+                || ballColor == null || ballSize == null) {
             throw new IncorrectDataException();
         }
-        Ball newBall = new Ball(ballColor, ballSize, weight);
-        return newBall;
+        return new Ball(ballColor, ballSize, weight);
     }
 }

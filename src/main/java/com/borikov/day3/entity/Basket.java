@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Basket {
     private final double capacity;
-    private final ArrayList<Ball> balls;
+    private ArrayList<Ball> balls;
 
     public Basket(double capacity) {
         this.capacity = capacity;
@@ -31,8 +31,12 @@ public class Basket {
         return result;
     }
 
-    public boolean delete(Ball ball) {
+    public boolean remove(Ball ball) {
         return balls.remove(ball);
+    }
+
+    public Ball get(int index) {
+        return balls.get(index);
     }
 
     public double calculateBusyCapacity() {

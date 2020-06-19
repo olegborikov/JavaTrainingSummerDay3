@@ -43,7 +43,7 @@ public class Ball {
                 return false;
             }
         } else {
-            if (!ball.equals(ball.color)) {
+            if (!color.equals(ball.color)) {
                 return false;
             }
         }
@@ -52,7 +52,7 @@ public class Ball {
                 return false;
             }
         } else {
-            if (!ball.equals(ball.size)) {
+            if (!size.equals(ball.size)) {
                 return false;
             }
         }
