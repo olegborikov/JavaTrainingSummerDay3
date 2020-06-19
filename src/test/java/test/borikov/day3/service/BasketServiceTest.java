@@ -7,8 +7,8 @@ import com.borikov.day3.enumtype.Color;
 import com.borikov.day3.enumtype.Size;
 import com.borikov.day3.exception.IncorrectDataException;
 import com.borikov.day3.service.BasketService;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -16,13 +16,17 @@ import static org.testng.Assert.*;
 
 public class BasketServiceTest {
     BasketService basketService;
+    BasketCreator basketCreator;
+    Basket mainBasket;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
         basketService = new BasketService();
+        basketCreator = new BasketCreator();
+        mainBasket = basketCreator.createFillUpBasket();
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() {
         basketService = null;
     }
@@ -30,9 +34,9 @@ public class BasketServiceTest {
     @DataProvider(name = "countBallsByColorPositiveData")
     public Object[][] createCountBallsByColorPositiveData() {
         return new Object[][]{
-                {new BasketCreator().createFillUpBasket(), Color.GREY, 3},
-                {new BasketCreator().createFillUpBasket(), Color.GREEN, 1},
-                {new BasketCreator().createFillUpBasket(), Color.YELLOW, 0},
+                {mainBasket, Color.GREY, 3},
+                {mainBasket, Color.GREEN, 1},
+                {mainBasket, Color.YELLOW, 0},
         };
     }
 
@@ -49,9 +53,9 @@ public class BasketServiceTest {
     @DataProvider(name = "countBallsByColorNegativeData")
     public Object[][] createCountBallsByColorNegativeData() {
         return new Object[][]{
-                {new BasketCreator().createFillUpBasket(), Color.GREY, 2},
-                {new BasketCreator().createFillUpBasket(), Color.GREEN, 4},
-                {new BasketCreator().createFillUpBasket(), Color.YELLOW, 1},
+                {mainBasket, Color.GREY, 2},
+                {mainBasket, Color.GREEN, 4},
+                {mainBasket, Color.YELLOW, 1},
         };
     }
 
@@ -69,7 +73,7 @@ public class BasketServiceTest {
     public Object[][] createCountBallsByColorExceptionData() {
         return new Object[][]{
                 {null, Color.GREY},
-                {new BasketCreator().createFillUpBasket(), null},
+                {mainBasket, null},
                 {null, null},
         };
     }
@@ -84,7 +88,7 @@ public class BasketServiceTest {
     @DataProvider(name = "calculateBallsWeightPositiveData")
     public Object[][] createCalculateBallsWeightPositiveData() {
         return new Object[][]{
-                {new BasketCreator().createFillUpBasket(), 45},
+                {mainBasket, 45},
                 {new Basket(200) {{
                     add(new Ball(Color.RED, Size.XXS, 1));
                     add(new Ball(Color.BLUE, Size.XS, 2));
@@ -114,7 +118,7 @@ public class BasketServiceTest {
     @DataProvider(name = "calculateBallsWeightNegativeData")
     public Object[][] createCalculateBallsWeightNegativeData() {
         return new Object[][]{
-                {new BasketCreator().createFillUpBasket(), 13},
+                {mainBasket, 13},
                 {new Basket(200) {{
                     add(new Ball(Color.RED, Size.XXS, 1));
                     add(new Ball(Color.BLUE, Size.XS, 2));

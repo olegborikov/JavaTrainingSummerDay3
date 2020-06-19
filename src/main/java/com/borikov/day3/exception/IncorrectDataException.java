@@ -1,6 +1,6 @@
 package com.borikov.day3.exception;
 
-public class IncorrectDataException extends Exception{
+public class IncorrectDataException extends Exception {
     public IncorrectDataException() {
     }
 

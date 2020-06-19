@@ -2,7 +2,7 @@ package test.borikov.day3.validator;
 
 import com.borikov.day3.validator.BasketValidator;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,7 +11,7 @@ import static org.testng.Assert.*;
 public class BasketValidatorTest {
     BasketValidator basketValidator;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
         basketValidator = new BasketValidator();
     }
